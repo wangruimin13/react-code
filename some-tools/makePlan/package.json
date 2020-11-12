@@ -1,0 +1,24 @@
+{
+  "name": "makeplan",
+  "version": "1.0.0",
+  "description": "this can make some plans according to different identify people",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "makeplan": "index.js"
+  },
+  "author": "ruimin.wang",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.1",
+    "download-git-repo": "^3.0.2",
+    "handlebars": "^4.7.3",
+    "inquirer": "^7.0.4",
+    "log-symbols": "^3.0.0",
+    "ora": "^4.0.3"
+  }
+}
