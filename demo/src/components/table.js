@@ -1,70 +1,102 @@
-import {Table} from 'antd'
-import React from 'react'
-const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      render: text => <a>{text}</a>,
-      width: 150,
-    },
-    {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
-      width: 80,
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address 1',
-      ellipsis: true,
-    },
-    {
-      title: 'Long Column Long Column Long Column',
-      dataIndex: 'address',
-      key: 'address 2',
-      ellipsis: true,
-    },
-    {
-      title: 'Long Column Long Column',
-      dataIndex: 'address',
-      key: 'address 3',
-      ellipsis: true,
-    },
-    {
-      title: 'Long Column',
-      dataIndex: 'address',
-      key: 'address 4',
-      ellipsis: true,
-    },
-  ];
-  
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
-      tags: ['nice', 'developer'],
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 2 Lake Park, London No. 2 Lake Park',
-      tags: ['loser'],
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park, Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher'],
-    },
-  ];
-export default function Tables() {
-    return (
-        <Table columns={columns} dataSource={data} />
-    )
-}
+import React, { useState } from 'react';
+import {
+  Form,
+  Input,
+  Button,
+  Radio,
+  Select,
+  Cascader,
+  DatePicker,
+  InputNumber,
+  TreeSelect,
+  Switch,
+} from 'antd';
+
+const Tables = () => {
+  const [componentSize, setComponentSize] = useState('default');
+
+  const onFormLayoutChange = ({ size }) => {
+    setComponentSize(size);
+  };
+
+  return (
+    <>
+      <Form
+        labelCol={{
+          span: 4,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}
+        layout="horizontal"
+        initialValues={{
+          size: componentSize,
+        }}
+        onValuesChange={onFormLayoutChange}
+        size={componentSize}
+      >
+        <Form.Item label="Form Size" name="size">
+          <Radio.Group>
+            <Radio.Button value="small">Small</Radio.Button>
+            <Radio.Button value="default">Default</Radio.Button>
+            <Radio.Button value="large">Large</Radio.Button>
+          </Radio.Group>
+        </Form.Item>
+        <Form.Item label="Input">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Select">
+          <Select>
+            <Select.Option value="demo">Demo</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item label="TreeSelect">
+          <TreeSelect
+            treeData={[
+              {
+                title: 'Light',
+                value: 'light',
+                children: [
+                  {
+                    title: 'Bamboo',
+                    value: 'bamboo',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item label="Cascader">
+          <Cascader
+            options={[
+              {
+                value: 'zhejiang',
+                label: 'Zhejiang',
+                children: [
+                  {
+                    value: 'hangzhou',
+                    label: 'Hangzhou',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item label="DatePicker">
+          <DatePicker />
+        </Form.Item>
+        <Form.Item label="InputNumber">
+          <InputNumber />
+        </Form.Item>
+        <Form.Item label="Switch">
+          <Switch />
+        </Form.Item>
+        <Form.Item label="Button">
+          <Button>Button</Button>
+        </Form.Item>
+      </Form>
+    </>
+  );
+};
+
+export default Tables
